@@ -19,7 +19,7 @@ const adminRoutes = require('./routes/adminroutes.js');
 const _dirname = path.resolve();
 
 const corsOptions = {
-    origin: 'http://localhost:3000',  
+    origin: 'https://frontback-owwy.onrender.com',  
     credentials: true,  
 };
 
@@ -30,14 +30,6 @@ app.use(cookieParser());
 app.use("/api",routes);
 app.use("/api",adminRoutes)
 app.use("/api",employeeroutes)
- 
-// app.use(express.static(path.join(__dirname, '../frontend/build')));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname,"../frontend","build","index.html"));
-// });
-
- 
-
 
 app.listen(PORT,() => { 
     console.log("Server is runing at port: ",PORT)
