@@ -136,10 +136,12 @@ router.post('/login',async(req,res) => {
       const token =  await emp.generateAuthToken();  
       console.log('token is: ',token)
 
-      res.cookie("jwt",token,{
-        expires: new Date(Date.now()+ 1000000),
-        httpOnly:true,
-    })
+      res.cookie("jwt", token, {
+        expires: new Date(Date.now() + 1000000),
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production', // Only secure in production
+        sameSite: 'none', // Required for cross-site cookies
+      });
 
       return res.status(200).send({
           success:true,
@@ -187,10 +189,12 @@ router.patch('/login/changepassword',authmiddleware, async(req,res)=>{
     //token for JWT
     const token =  await emp.generateAuthToken();  
 
-    res.cookie("jwt",token,{
-      expires: new Date(Date.now()+ 1000000),
-      httpOnly:true,
-    })
+    res.cookie("jwt", token, {
+      expires: new Date(Date.now() + 1000000),
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // Only secure in production
+      sameSite: 'none', // Required for cross-site cookies
+    });
     
     emp.pass = newpassword;
 
