@@ -31,10 +31,10 @@ app.use("/api",routes);
 app.use("/api",adminRoutes)
 app.use("/api",employeeroutes)
  
-app.use(express.static(path.join(__dirname, '../frontend/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname,"../frontend","build","index.html"));
-});
+// app.use(express.static(path.join(__dirname, '../frontend/build')));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname,"../frontend","build","index.html"));
+// });
 
  
 
